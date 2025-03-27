@@ -52,7 +52,8 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return inertia('Show');
+        // this
+        return inertia('Show_resources', ['post' => $post]);
     }
 
     /**
@@ -76,6 +77,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        // dd($post);
+        $post -> delete();
+        return redirect('/');
     }
 }

@@ -1,12 +1,16 @@
 import { Link } from "@inertiajs/react";
 import { space } from "postcss/lib/list";
+import { useRoute } from "../../../vendor/tightenco/ziggy";
 
 export default function Home({posts}){
-    console.log(posts);
+    // console.log(posts);
+
+    const route = useRoute()
+
     return(
         <>
         {/* nu met kayat mo i call out jai indeclare mo nga name dijai web.php, kasta nukwa format na */}
-            <h1 className="title">Hello</h1>
+            <h1 className="title">home page</h1>
 
             {/* preserve the scroll position of clicking something*/}
             {/* <Link preserveScroll href="/" className="block title mt-[1000px]">{new Date().toLocaleTimeString()}</Link> */}
@@ -23,7 +27,9 @@ export default function Home({posts}){
                         </div>
                         <p className="font-medium">{post.body}</p>
 
-                        <Link href={`/posts/${post.id}`} className="text-link">Read more...</Link>
+                        {/* Show Resources */}
+                        {/* <Link href={`/posts/${post.id}`} className="text-link">Read more...</Link> */}
+                        <Link href={route('posts.show', post)} className="text-link">Read more...</Link>
                     </div>
                 ))}
             </div>
