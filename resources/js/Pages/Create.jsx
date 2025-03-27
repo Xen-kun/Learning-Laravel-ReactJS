@@ -1,12 +1,40 @@
-import { Link } from "@inertiajs/react";
+import { useForm } from "@inertiajs/react";
 
-export default function Create({name}){
+export default function Create(){
+    const { data, setData, post, errors, processing } = useForm({
+        body: "",
+    });
+
+    function submit(e) {
+        e.preventDefault();
+        post("/posts");
+    }
+
+    // console.log(useForm());
+    console.log(errors);
+
     return(
         <>
-            <h1 className="title">Hello {name}</h1>
+            <h1 className="title">Create a new post </h1>
+            {/* data.body */}
+
+            <div className="w-1/2 mx-auto">
+                <form onSubmit={submit}>
+                    <textarea 
+                    rows="5" 
+                    value={data.body}
+                    onChange={(e) => setData('body', e.target.value)}
+                    className={errors.body && '!ring-red-500'}
+                    ></textarea>
+
+                    {errors.body && <p className="error">{errors.body}</p>}
+
+                    <button className="primary-btn mt-4" disabled={processing}>Create</button>
+                </form>
+            </div>
 
             {/* preserve the scroll position of clicking something*/}
-            <Link preserveScroll href="/" className="block title mt-[1000px]">{new Date().toLocaleTimeString()}</Link>
+            {/* <Link preserveScroll href="/" className="block title mt-[1000px]">{new Date().toLocaleTimeString()}</Link> */}
         </>
     );
 }

@@ -17,12 +17,12 @@ export default function Layout({ children }){
                     </Link>
 
                     {/* Nu kayat mo nga i route jai other pages ket kastuy nukwa*/}
-                    <Link className="nav-link" href="/create"> 
+                    <Link className="nav-link" href="/posts/create"> 
                         Create
                     </Link>
 
                     {/* Nu kayat mo nga i route jai other pages ket kastuy nukwa*/}
-                    <Link className="nav-link" href="/about">
+                    <Link className="nav-link" href="/posts/about">
                         About
                     </Link>
                 </nav>
